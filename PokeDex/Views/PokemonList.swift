@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct PokemonList: View {
+    
+    let pokemons: [Pokemon]
+    
     var body: some View {
         List {
-            ForEach(1..<20) { i in
+            ForEach(pokemons) { poke in
                 if #available(iOS 15.0, *) {
-                    PokemonCard()
+                    PokemonCard(poke: poke)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
                 } else {
                     // Fallback on earlier versions
-                    PokemonCard()
+                    PokemonCard(poke: poke)
                         .listRowBackground(Color.clear)
                 }
             }
@@ -26,5 +29,5 @@ struct PokemonList: View {
 }
 
 #Preview {
-    PokemonList()
+    PokemonList(pokemons: [])
 }

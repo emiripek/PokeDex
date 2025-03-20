@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var pokemonVM: PokemonViewModel = PokemonViewModel()
+    
     var body: some View {
         NavigationView {
-            PokemonList()
+            PokemonList(pokemons: pokemonVM.pokemons)
                 .navigationTitle("Pokemons")
         }
     }

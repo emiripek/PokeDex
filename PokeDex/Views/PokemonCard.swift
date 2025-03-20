@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PokemonCard: View {
+    let poke: Pokemon
     var body: some View {
         ZStack(alignment: .bottom) {
             Image(.pikachu)
@@ -17,16 +18,16 @@ struct PokemonCard: View {
                 .shadow(radius: 20)
                 .padding()
             if #available(iOS 15.0, *) {
-                PokemonBgText()
+                PokemonBgText(name: poke.name)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
                     .offset(x: 0, y: -40)
             } else {
-                PokemonBgText()
+                PokemonBgText(name: poke.name)
             }
         }
     }
 }
 
 #Preview {
-    PokemonCard()
+    PokemonCard(poke: Pokemon(num: 1, name: "Pikachu", variations: []))
 }

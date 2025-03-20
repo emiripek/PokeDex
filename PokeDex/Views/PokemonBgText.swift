@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PokemonBgText: View {
+    let name: String
     var body: some View {
-        Text("Pikachu")
+        Text(name)
             .font(.largeTitle)
             .fontWeight(.bold)
             .multilineTextAlignment(.center)
@@ -19,5 +20,5 @@ struct PokemonBgText: View {
 }
 
 #Preview {
-    PokemonBgText()
+    PokemonBgText(name: "Pikachu")
 }
