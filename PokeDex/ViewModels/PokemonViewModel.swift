@@ -11,12 +11,18 @@ class PokemonViewModel: ObservableObject {
     @Published var pokemons: [Pokemon] = []
     
     init() {
-        self.fetchPokemons()
+        /// for iOS 15.0 or later versions don't use this function
+//        self.fetchPokemons()
     }
     
     func fetchPokemons() {
         APIService().fetchPokemons { pokemons in
             self.pokemons = pokemons
         }
+    }
+    
+    @available(iOS 15.0, *)
+    func fetchAsyncPokemons() async {
+        self.pokemons = await APIService().fetchPokemons()
     }
 }

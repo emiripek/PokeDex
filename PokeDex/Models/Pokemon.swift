@@ -16,6 +16,7 @@ struct Pokemon: Codable, Identifiable {
     let num: Int
     let name: String
     let variations: [PokeVariton]
+    let link: String
 }
 
 struct PokeVariton: Codable {
@@ -23,4 +24,9 @@ struct PokeVariton: Codable {
     let description: String
     let image: String
     let types: [String]
+    var urlImage: URL {
+        get {
+            URL(string: "\(baseURL)/master/public/\(image)")!
+        }
+    }
 }

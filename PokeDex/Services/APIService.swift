@@ -25,4 +25,12 @@ class APIService {
             }
         }.resume()
     }
+    @available(iOS 15.0, *)
+    func fetchPokemons() async -> [Pokemon] {
+        let url = URL(string: "\(baseURL)/master/data/pokemon.json")
+        let (data, _) = try! await URLSession.shared.data(from: url!)
+        let pokemons = try! JSONDecoder().decode([Pokemon].self, from: data)
+        print(pokemons)
+        return pokemons
+    }
 }
