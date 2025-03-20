@@ -2,8 +2,6 @@
 
 A modern iOS app built with SwiftUI that serves as a comprehensive Pokémon encyclopedia. Browse, search, and discover detailed information about your favorite Pokémon.
 
-![PokéDex App Banner](https://via.placeholder.com/800x400?text=PokeDex+App)
-
 ## Features
 
 - **Clean SwiftUI Interface**: Modern, responsive UI built entirely with SwiftUI
@@ -86,9 +84,7 @@ This app uses the [PokéAPI](https://pokeapi.co/), a free RESTful Pokémon API.
 
 ## Future Enhancements
 
-- Favorites system to save preferred Pokémon
 - Advanced filtering by type, region, or other attributes
-- Offline mode with local data storage
 - Dark/light mode toggle
 - Evolution chains visualization
 
