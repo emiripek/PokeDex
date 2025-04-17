@@ -15,9 +15,9 @@ A modern iOS app built with SwiftUI that serves as a comprehensive Pokémon ency
 ## Screenshots
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="https://raw.githubusercontent.com/emiripek/PokeDex/refs/heads/main/Simulator%20Screenshot%20-%20iPhone%2011%20-%202025-04-17%20at%2017.30.09.png" alt="Home Screen">
+    <img src="https://raw.githubusercontent.com/emiripek/PokeDex/refs/heads/main/Simulator%20Screenshot%20-%20iPhone%2011%20-%202025-04-17%20at%2017.30.09.png" width="30%" alt="Home Screen">
     <img src="https://raw.githubusercontent.com/emiripek/PokeDex/refs/heads/main/Simulator%20Screenshot%20-%20iPhone%2011%20-%202025-04-17%20at%2017.30.18.png" width="30%" alt="Home Screen">
-    <img src="https://raw.githubusercontent.com/emiripek/PokeDex/refs/heads/main/Simulator%20Screenshot%20-%20iPhone%2011%20-%202025-04-17%20at%2017.30.25.png" width="30%" alt="Home Screen">
+    <img src="https://raw.githubusercontent.com/emiripek/PokeDex/refs/heads/main/Simulator%20Screenshot%20-%20iPhone%2011%20-%202025-04-17%20at%2017.30.25.png" width="30%" alt="Detail Screen">
 </div>
 
 ## Technologies Used
