@@ -60,24 +60,6 @@ The app follows MVVM architecture with these key components:
 - **ViewModels**: Business logic and data transformation
 - **Services**: API communication and data fetching
 
-```
-PokeDex/
-├── Models/
-│   ├── Pokemon.swift
-│   └── PokemonDetailModel.swift
-├── Views/
-│   ├── PokemonView.swift
-│   ├── PokemonDetailView.swift
-│   └── Components/
-│       ├── PokemonCell.swift
-│       └── StatBar.swift
-├── ViewModels/
-│   ├── PokemonViewModel.swift
-│   └── PokemonDetailViewModel.swift
-└── Services/
-    └── ApiClient.swift
-```
-
 ## API Reference
 
 This app uses the [PokéAPI](https://pokeapi.co/), a free RESTful Pokémon API.
