@@ -6,35 +6,72 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
+    @ObservedObject var pokemonVM = PokemonViewModel()
+    @State private var searchText = ""
     
-    @ObservedObject var pokemonVM: PokemonViewModel = PokemonViewModel()
-    
-    @State var searchText: String = ""
+    var filteredPokemon: [Pokemon] {
+        if searchText == "" { return pokemonVM.pokemon }
+        return pokemonVM.pokemon.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+    }
     
     var body: some View {
         NavigationView {
-            if #available(iOS 15.0, *) {
-                PokemonList(pokemons: filteredPokemons)
-                    .task {
-                        await pokemonVM.fetchPokemons()
+            List {
+                ForEach(filteredPokemon) { pokemon in
+                    NavigationLink(destination: PokemonDetailView(pokemon: pokemon)) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 5) {
+                                HStack {
+                                    Text(pokemon.name.capitalized)
+                                        .font(.title)
+                                    if pokemon.isFavorite {
+                                        Image(systemName: "star.fill")
+                                            .foregroundColor(.yellow)
+                                    }
+                                }
+                                
+                                HStack {
+                                    Text(pokemon.type.capitalized)
+                                        .italic()
+                                    Circle()
+                                        .foregroundColor(pokemon.typeColor)
+                                        .frame(width: 10, height: 10)
+                                }
+                                
+                                Text(pokemon.description)
+                                    .font(.caption)
+                                    .lineLimit(2)
+                            }
+                            
+                            Spacer()
+                            
+                            VStack {
+                                KFImage(URL(string: pokemon.imageURL))
+                                    .interpolation(.none)
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                            }
+                        }
                     }
-                    .searchable(text: $searchText)
-                    .navigationTitle("Pokemons")
-            } else {
-                PokemonList(pokemons: filteredPokemons)
-                    .navigationTitle("Pokemons")
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button(action: { addFavorite(pokemon: pokemon) }) {
+                            Image(systemName: "star")
+                        }
+                        .tint(.yellow)
+                    }
+                }
             }
+            .navigationTitle("Pokemon")
+            .searchable(text: $searchText)
         }
     }
-    var filteredPokemons: [Pokemon] {
-        guard !searchText.isEmpty else {
-            return pokemonVM.pokemons
-        }
-        
-        return pokemonVM.pokemons.filter {
-            $0.name.lowercased().contains(searchText.lowercased())
+    
+    func addFavorite(pokemon: Pokemon) {
+        if let index = pokemonVM.pokemon.firstIndex(where: { $0.id == pokemon.id }) {
+            pokemonVM.pokemon[index].isFavorite.toggle()
         }
     }
 }

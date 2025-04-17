@@ -20,7 +20,6 @@ class APIService {
             
             DispatchQueue.main.async {
                 let pokemons = try! JSONDecoder().decode([Pokemon].self, from: data)
-                print(pokemons)
                 completion(pokemons)
             }
         }.resume()
